@@ -1,68 +1,60 @@
-:root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+@import url('https://fonts.googleapis.com/css2?family=Tinos:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+@import "tailwindcss";
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@layer components {
+  .paper {
+    @apply w-[210mm] bg-white text-black font-serif text-[11pt] leading-[1.4] shadow-md mx-auto relative overflow-hidden h-auto;
+    padding: 15mm 20mm 15mm 25mm;
+  }
+
+  @media screen {
+    .paper {
+      min-height: 297mm;
+    }
+  }
+
+  /* SPPD Table Styles */
+  .sppd-table {
+    @apply w-full border-collapse mb-[10px];
+  }
+  .sppd-table td {
+    @apply align-top text-justify;
+  }
+  .sppd-label {
+    @apply w-[100px] font-bold;
+  }
+  .sppd-colon {
+    @apply w-[20px] text-center;
+  }
+
+  /* Lists */
+  .list-numbered {
+    list-style-type: decimal;
+    margin-left: 25px;
+    padding-left: 5px;
+  }
+  
+  /* Sub-table */
+  .sub-table td {
+    padding: 1px 0;
+  }
+
+  /* Paraf Box */
+  .paraf-box {
+    @apply mt-[30px] border border-black w-[150px] text-[10pt] border-collapse;
+  }
+  .paraf-box td {
+    @apply border border-black px-[5px] py-[2px];
+  }
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+.signature-section {
+  @apply mt-[30px] float-right text-center w-[280px];
 }
 
 body {
+  @apply bg-gray-100 font-sans;
   margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-}
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
 }
