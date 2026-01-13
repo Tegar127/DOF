@@ -7,14 +7,14 @@ export default function SppdInputs({ data, onChange, onListChange }) {
   };
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-5 animate-fadeIn">
         <div>
-            <label className="block text-sm font-medium text-gray-700">Menimbang</label>
+            <label className="label-modern">Menimbang</label>
             <textarea
                 value={data.sppdWeigh || ''}
                 onChange={(e) => handleChange('sppdWeigh', e.target.value)}
                 rows="3"
-                className="w-full p-2 border rounded"
+                className="input-modern resize-y"
                 placeholder="bahwa dalam rangka..."
             ></textarea>
         </div>
@@ -28,118 +28,147 @@ export default function SppdInputs({ data, onChange, onListChange }) {
             placeholder="Peraturan..."
         />
 
-        <hr />
-        <input
-            type="text"
-            value={data.sppdTo || ''}
-            onChange={(e) => handleChange('sppdTo', e.target.value)}
-            className="w-full p-2 border rounded"
-            placeholder="Kepada (Nama & Jabatan)"
-        />
-
-        <div className="bg-gray-50 p-3 rounded border">
-            <label className="block text-sm font-bold text-gray-700 mb-2">Detail Perintah (Untuk)</label>
-            
-            <label className="text-xs text-gray-500">Poin 1: Kegiatan</label>
+        <div className="border-t border-gray-100 my-2"></div>
+        
+        <div>
+            <label className="label-modern">Kepada</label>
             <input
                 type="text"
-                value={data.sppdTask || ''}
-                onChange={(e) => handleChange('sppdTask', e.target.value)}
-                className="w-full p-2 border rounded mb-2"
-                placeholder="Melaksanakan kegiatan..."
+                value={data.sppdTo || ''}
+                onChange={(e) => handleChange('sppdTo', e.target.value)}
+                className="input-modern"
+                placeholder="Nama & Jabatan"
             />
+        </div>
+
+        <div className="bg-blue-50/30 p-4 rounded-xl border border-blue-100/50 space-y-3">
+            <h4 className="text-sm font-bold text-blue-800 uppercase tracking-wide mb-2">
+                Detail Perintah
+            </h4>
             
-            <label className="text-xs text-gray-500">Poin 2: Detail Perjalanan</label>
-            <div className="grid grid-cols-2 gap-2 mb-2">
+            <div>
+                <label className="label-modern text-blue-700">Poin 1: Kegiatan</label>
                 <input
                     type="text"
-                    value={data.sppdDest || ''}
-                    onChange={(e) => handleChange('sppdDest', e.target.value)}
-                    className="p-2 border rounded w-full"
-                    placeholder="Tujuan (Denpasar)"
-                />
-                <input
-                    type="text"
-                    value={data.sppdTransport || ''}
-                    onChange={(e) => handleChange('sppdTransport', e.target.value)}
-                    className="p-2 border rounded w-full"
-                    placeholder="Pesawat Udara"
+                    value={data.sppdTask || ''}
+                    onChange={(e) => handleChange('sppdTask', e.target.value)}
+                    className="input-modern"
+                    placeholder="Melaksanakan kegiatan..."
                 />
             </div>
-            <div className="grid grid-cols-2 gap-2 mb-2">
-                <div>
-                    <span className="text-xs">Berangkat</span>
+            
+            <div>
+                <label className="label-modern text-blue-700">Poin 2: Detail Perjalanan</label>
+                <div className="grid grid-cols-2 gap-3 mb-3">
                     <input
-                        type="date"
-                        value={data.sppdDateGo || ''}
-                        onChange={(e) => handleChange('sppdDateGo', e.target.value)}
-                        className="w-full p-2 border rounded"
+                        type="text"
+                        value={data.sppdDest || ''}
+                        onChange={(e) => handleChange('sppdDest', e.target.value)}
+                        className="input-modern"
+                        placeholder="Tujuan"
+                    />
+                    <input
+                        type="text"
+                        value={data.sppdTransport || ''}
+                        onChange={(e) => handleChange('sppdTransport', e.target.value)}
+                        className="input-modern"
+                        placeholder="Transportasi"
                     />
                 </div>
-                <div>
-                    <span className="text-xs">Kembali</span>
-                    <input
-                        type="date"
-                        value={data.sppdDateBack || ''}
-                        onChange={(e) => handleChange('sppdDateBack', e.target.value)}
-                        className="w-full p-2 border rounded"
-                    />
+                <div className="grid grid-cols-2 gap-3">
+                    <div>
+                        <span className="text-xs font-semibold text-gray-500 mb-1 block">Berangkat</span>
+                        <input
+                            type="date"
+                            value={data.sppdDateGo || ''}
+                            onChange={(e) => handleChange('sppdDateGo', e.target.value)}
+                            className="input-modern"
+                        />
+                    </div>
+                    <div>
+                        <span className="text-xs font-semibold text-gray-500 mb-1 block">Kembali</span>
+                        <input
+                            type="date"
+                            value={data.sppdDateBack || ''}
+                            onChange={(e) => handleChange('sppdDateBack', e.target.value)}
+                            className="input-modern"
+                        />
+                    </div>
                 </div>
             </div>
 
-            <label className="text-xs text-gray-500">Poin 3, 4, 5 (Standar/Edit)</label>
-            <textarea
-                value={data.sppdFunding || ''}
-                onChange={(e) => handleChange('sppdFunding', e.target.value)}
-                rows="2"
-                className="w-full p-2 border rounded mb-1"
-                placeholder="Biaya dibebankan..."
-            ></textarea>
-            <textarea
-                value={data.sppdReport || ''}
-                onChange={(e) => handleChange('sppdReport', e.target.value)}
-                rows="2"
-                className="w-full p-2 border rounded mb-1"
-                placeholder="Melaporkan pelaksanaan..."
-            ></textarea>
-            <textarea
-                value={data.sppdClose || ''}
-                onChange={(e) => handleChange('sppdClose', e.target.value)}
-                rows="1"
-                className="w-full p-2 border rounded"
-                placeholder="Melaksanakan dengan tanggung jawab."
-            ></textarea>
+            <div>
+                <label className="label-modern text-blue-700">Poin 3, 4, 5 (Standar/Edit)</label>
+                <div className="space-y-2">
+                    <textarea
+                        value={data.sppdFunding || ''}
+                        onChange={(e) => handleChange('sppdFunding', e.target.value)}
+                        rows="2"
+                        className="input-modern resize-none"
+                        placeholder="Biaya dibebankan..."
+                    ></textarea>
+                    <textarea
+                        value={data.sppdReport || ''}
+                        onChange={(e) => handleChange('sppdReport', e.target.value)}
+                        rows="2"
+                        className="input-modern resize-none"
+                        placeholder="Melaporkan pelaksanaan..."
+                    ></textarea>
+                    <textarea
+                        value={data.sppdClose || ''}
+                        onChange={(e) => handleChange('sppdClose', e.target.value)}
+                        rows="1"
+                        className="input-modern resize-none"
+                        placeholder="Melaksanakan dengan tanggung jawab."
+                    ></textarea>
+                </div>
+            </div>
         </div>
 
-        <div className="grid grid-cols-2 gap-2">
-            <input
-                type="text"
-                value={data.sppdLoc || ''}
-                onChange={(e) => handleChange('sppdLoc', e.target.value)}
-                className="w-full p-2 border rounded"
-                placeholder="Lokasi"
-            />
-            <input
-                type="date"
-                value={data.sppdSignDate || ''}
-                onChange={(e) => handleChange('sppdSignDate', e.target.value)}
-                className="w-full p-2 border rounded"
-            />
+        <div className="grid grid-cols-2 gap-3">
+            <div>
+                <label className="label-modern">Lokasi</label>
+                <input
+                    type="text"
+                    value={data.sppdLoc || ''}
+                    onChange={(e) => handleChange('sppdLoc', e.target.value)}
+                    className="input-modern"
+                    placeholder="Lokasi"
+                />
+            </div>
+            <div>
+                <label className="label-modern">Tanggal TTD</label>
+                <input
+                    type="date"
+                    value={data.sppdSignDate || ''}
+                    onChange={(e) => handleChange('sppdSignDate', e.target.value)}
+                    className="input-modern"
+                />
+            </div>
         </div>
-        <input
-            type="text"
-            value={data.sppdSignPos || ''}
-            onChange={(e) => handleChange('sppdSignPos', e.target.value)}
-            className="w-full p-2 border rounded"
-            placeholder="DIREKTUR UTAMA"
-        />
-        <input
-            type="text"
-            value={data.sppdSignName || ''}
-            onChange={(e) => handleChange('sppdSignName', e.target.value)}
-            className="w-full p-2 border rounded"
-            placeholder="Nama Penandatangan"
-        />
+        
+        <div className="space-y-3">
+            <div>
+                <label className="label-modern">Jabatan Penandatangan</label>
+                <input
+                    type="text"
+                    value={data.sppdSignPos || ''}
+                    onChange={(e) => handleChange('sppdSignPos', e.target.value)}
+                    className="input-modern"
+                    placeholder="DIREKTUR UTAMA"
+                />
+            </div>
+            <div>
+                <label className="label-modern">Nama Penandatangan</label>
+                <input
+                    type="text"
+                    value={data.sppdSignName || ''}
+                    onChange={(e) => handleChange('sppdSignName', e.target.value)}
+                    className="input-modern"
+                    placeholder="Nama Lengkap"
+                />
+            </div>
+        </div>
 
         <DynamicList
             label="Tembusan"

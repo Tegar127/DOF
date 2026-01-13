@@ -2,27 +2,29 @@ import React from 'react';
 
 export default function TabSwitcher({ activeTab, onSwitch }) {
   return (
-    <div className="flex p-4 bg-gray-50 border-b gap-2">
-      <button
-        onClick={() => onSwitch('nota')}
-        className={`flex-1 py-2 px-4 rounded font-bold border transition ${
-          activeTab === 'nota'
-            ? 'bg-blue-600 text-white border-blue-600'
-            : 'bg-white text-gray-700 border-gray-300'
-        }`}
-      >
-        Nota Dinas
-      </button>
-      <button
-        onClick={() => onSwitch('sppd')}
-        className={`flex-1 py-2 px-4 rounded font-bold border transition ${
-          activeTab === 'sppd'
-            ? 'bg-blue-600 text-white border-blue-600'
-            : 'bg-white text-gray-700 border-gray-300'
-        }`}
-      >
-        Surat Perintah
-      </button>
+    <div className="p-6 pb-0">
+      <div className="flex bg-gray-100 p-1.5 rounded-xl">
+        <button
+          onClick={() => onSwitch('nota')}
+          className={`flex-1 py-2.5 px-4 rounded-lg font-semibold text-sm transition-all duration-200 ${
+            activeTab === 'nota'
+              ? 'bg-white text-blue-600 shadow-sm ring-1 ring-black/5'
+              : 'text-gray-500 hover:text-gray-700 hover:bg-gray-200/50'
+          }`}
+        >
+          Nota Dinas
+        </button>
+        <button
+          onClick={() => onSwitch('sppd')}
+          className={`flex-1 py-2.5 px-4 rounded-lg font-semibold text-sm transition-all duration-200 ${
+            activeTab === 'sppd'
+              ? 'bg-white text-blue-600 shadow-sm ring-1 ring-black/5'
+              : 'text-gray-500 hover:text-gray-700 hover:bg-gray-200/50'
+          }`}
+        >
+          Surat Perintah
+        </button>
+      </div>
     </div>
   );
 }
