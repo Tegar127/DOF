@@ -39,29 +39,74 @@ function App() {
 
   const handleDownload = () => {
     const element = contentRef.current;
+    if (!element) {
+        alert("Terjadi kesalahan: Konten dokumen tidak ditemukan.");
+        return;
+    }
+
     const fileName = activeTab === 'nota' ? 'Nota_Dinas.pdf' : 'Surat_Perintah_SPPD.pdf';
     
-    const images = element.getElementsByTagName('img');
+    // Helper to generate PDF
     const generate = () => {
-        element.style.minHeight = 'unset';
-        const opt = {
-            margin: 0,
-            filename: fileName,
-            image: { type: 'jpeg', quality: 0.98 },
-            html2canvas: { 
-                scale: 2, 
-                useCORS: true, 
-                allowTaint: true 
-            },
-            jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
-        };
-        html2pdf().set(opt).from(element).save().then(() => {
-            element.style.minHeight = '';
-        });
+        try {
+            // Temporary style adjustments for better PDF rendering
+            const originalMinHeight = element.style.minHeight;
+            const originalTransition = element.style.transition;
+            
+            element.style.minHeight = 'unset';
+            element.style.transition = 'none'; // Disable transitions to prevent rendering artifacts
+
+            const opt = {
+                margin: 0,
+                filename: fileName,
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { 
+                    scale: 2, 
+                    useCORS: true, 
+                    allowTaint: true,
+                    logging: false
+                },
+                jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+            };
+
+            html2pdf().set(opt).from(element).save().then(() => {
+                // Restore styles
+                element.style.minHeight = originalMinHeight;
+                element.style.transition = originalTransition;
+            }).catch(err => {
+                console.error("PDF Generation Error:", err);
+                alert("Gagal membuat PDF. Silakan coba lagi.");
+                element.style.minHeight = originalMinHeight;
+                element.style.transition = originalTransition;
+            });
+        } catch (e) {
+            console.error("Setup Error:", e);
+        }
     };
 
-    if(images.length > 0 && !images[0].complete) {
-        images[0].onload = generate;
+    const images = element.getElementsByTagName('img');
+    
+    if(images.length > 0) {
+        const img = images[0];
+        if (img.complete) {
+            generate();
+        } else {
+            // Wait for image load with timeout fallback
+            let isGenerated = false;
+            
+            const onComplete = () => {
+                if (!isGenerated) {
+                    isGenerated = true;
+                    generate();
+                }
+            };
+
+            img.onload = onComplete;
+            img.onerror = onComplete; // Generate anyway even if image fails
+            
+            // Fallback timeout after 2 seconds
+            setTimeout(onComplete, 2000);
+        }
     } else {
         generate();
     }
