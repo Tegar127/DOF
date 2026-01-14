@@ -1,6 +1,7 @@
 import React from 'react';
 import NotaPreview from '../Documents/NotaPreview';
 import SppdPreview from '../Documents/SppdPreview';
+import logoAsa from '../../assets/logo_asa.png';
 
 export default function PreviewArea({ activeTab, data, contentRef }) {
   return (
@@ -11,7 +12,11 @@ export default function PreviewArea({ activeTab, data, contentRef }) {
         <div className="z-10 w-full flex justify-center pb-20">
             <div ref={contentRef} className="paper">
                  <div className="flex items-center mb-2">
-                    <img src="https://pensiun.asabri.co.id/resources/img/logo_asa.png" alt="ASABRI Logo" className="h-16 mb-2" />
+                    <img 
+                        src={logoAsa} 
+                        alt="ASABRI Logo" 
+                        className="h-16 mb-2"
+                    />
                 </div>
 
                 {activeTab === 'nota' && <NotaPreview data={data} />}

@@ -52,9 +52,11 @@ function App() {
             // Temporary style adjustments for better PDF rendering
             const originalMinHeight = element.style.minHeight;
             const originalTransition = element.style.transition;
+            const originalBoxShadow = element.style.boxShadow;
             
             element.style.minHeight = 'unset';
             element.style.transition = 'none'; // Disable transitions to prevent rendering artifacts
+            element.style.boxShadow = 'none'; // Remove shadow to prevent artifacts and color issues
 
             const opt = {
                 margin: 0,
@@ -73,11 +75,13 @@ function App() {
                 // Restore styles
                 element.style.minHeight = originalMinHeight;
                 element.style.transition = originalTransition;
+                element.style.boxShadow = originalBoxShadow;
             }).catch(err => {
                 console.error("PDF Generation Error:", err);
                 alert("Gagal membuat PDF. Silakan coba lagi.");
                 element.style.minHeight = originalMinHeight;
                 element.style.transition = originalTransition;
+                element.style.boxShadow = originalBoxShadow;
             });
         } catch (e) {
             console.error("Setup Error:", e);

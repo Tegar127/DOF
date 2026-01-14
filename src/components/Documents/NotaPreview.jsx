@@ -43,7 +43,7 @@ export default function NotaPreview({ data }) {
       <div style={{ clear: 'both' }}></div>
       <table className="paraf-box">
         <tbody>
-            <tr><td colSpan="2" className="text-center font-bold bg-gray-100">BD-MLI</td></tr>
+            <tr><td colSpan="2" className="text-center font-bold" style={{ backgroundColor: '#f3f4f6' }}>BD-MLI</td></tr>
             <tr><td rowSpan="2" className="text-center align-middle" width="50%">Paraf</td><td className="text-center">Staff</td></tr>
             <tr><td className="text-center" height="30"> </td></tr>
         </tbody>
