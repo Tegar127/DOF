@@ -5,12 +5,14 @@ import logoAsa from '../../assets/logo_asa.png';
 
 export default function PreviewArea({ activeTab, data, contentRef }) {
   return (
-    <div className="w-full lg:flex-1 bg-slate-100/50 overflow-y-auto p-4 lg:p-12 flex justify-center relative">
-        {/* Background Pattern */}
-        <div className="absolute inset-0 z-0 opacity-[0.03] pointer-events-none" style={{ backgroundImage: 'radial-gradient(#64748b 1px, transparent 1px)', backgroundSize: '24px 24px' }}></div>
+    <div className="w-full lg:flex-1 bg-slate-50/80 overflow-y-auto p-6 lg:p-16 flex justify-center relative shadow-[inset_0_0_20px_rgba(0,0,0,0.02)]">
+        {/* Subtle Grid Pattern */}
+        <div className="absolute inset-0 z-0 pointer-events-none opacity-[0.5]" 
+             style={{ backgroundImage: 'radial-gradient(#cbd5e1 1px, transparent 1px)', backgroundSize: '32px 32px' }}>
+        </div>
         
-        <div className="z-10 w-full flex justify-center pb-20">
-            <div ref={contentRef} className="paper">
+        <div className="z-10 w-full flex justify-center pb-32 pt-2">
+            <div ref={contentRef} className="paper ring-1 ring-black/5 shadow-2xl">
                  <div className="flex items-center mb-2">
                     <img 
                         src={logoAsa} 
